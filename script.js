@@ -1,5 +1,22 @@
 const choices = ["Rock", "Paper", "Scissors"];
 
+const btnRock = document.querySelector('.opt-rock');
+const btnPaper = document.querySelector('.opt-paper');
+const btnScissors = document.querySelector('opt-scissors');
+
+btnRock.addEventListener('click', () => {
+    playRound('rock', getComputerChoice());
+})
+
+btnPaper.addEventListener('click', () => {
+    playRound('rock', getComputerChoice());
+})
+
+btnScissors.addEventListener('click', () => {
+    playRound('rock', getComputerChoice());
+})
+
+
 
 function getComputerChoice() {
     const randIndex = Math.floor(Math.random() * choices.length);
@@ -37,23 +54,23 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-function game() {
-    let playerScore = 0;
-    let computerScore = 0;
-    for (let i = 0; i < 5; i++) {
-        const playerSelection = prompt("Your selection: ");
-        const computerSelection = getComputerChoice();
-        const winner = playRound(playerSelection, computerSelection);
-        winner.includes("You Win!") ? playerScore++ : computerScore++;
-    }
+// function game() {
+//     let playerScore = 0;
+//     let computerScore = 0;
+//     for (let i = 0; i < 5; i++) {
+//         const playerSelection = prompt("Your selection: ");
+//         const computerSelection = getComputerChoice();
+//         const winner = playRound(playerSelection, computerSelection);
+//         winner.includes("You Win!") ? playerScore++ : computerScore++;
+//     }
 
-    if (playerScore > computerScore) {
-        console.log("You Win!");
-    } else if (playerScore < computerScore) {
-        console.log('Computer Wins!')
-    } else {
-        console.log("Tie!");
-    }
-}
+//     if (playerScore > computerScore) {
+//         console.log("You Win!");
+//     } else if (playerScore < computerScore) {
+//         console.log('Computer Wins!')
+//     } else {
+//         console.log("Tie!");
+//     }
+// }
 
-game()
+// game()
