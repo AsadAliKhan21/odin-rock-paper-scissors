@@ -9,14 +9,17 @@ let computerScore = 0;
 
 btnRock.addEventListener("click", () => {
     playRound("ROCK", getComputerChoice());
+    game();
 });
 
 btnPaper.addEventListener("click", () => {
     playRound("PAPER", getComputerChoice());
+    game();
 });
 
 btnScissors.addEventListener("click", () => {
     playRound("SCISSORS", getComputerChoice());
+    game();
 });
 
 function getComputerChoice() {
@@ -111,23 +114,49 @@ function updateCurrentOpt(playerSelection, computerSelection) {
             : "✌";
 }
 
-// function game() {
-//     let playerScore = 0;
-//     let computerScore = 0;
-//     for (let i = 0; i < 5; i++) {
-//         const playerSelection = prompt("Your selection: ");
-//         const computerSelection = getComputerChoice();
-//         const winner = playRound(playerSelection, computerSelection);
-//         winner.includes("You Win!") ? playerScore++ : computerScore++;
-//     }
+function gameOver() {
+    const modalWindow = document.querySelector(".modal-window");
+    const modalText = document.querySelector(".modal-text");
+    if (playerScore === 5) {
+        openModal();
+        modalText.textContent = "You Won!";
+        modalWindow.style.backgroundColor = "green";
+        return true;
+    } else if (computerScore === 5) {
+        openModal();
+        modalText.textContent = "You Lost!";
+        modalWindow.style.backgroundColor = "darkred";
+        return true;
+    } else {
+        return false;
+    }
+}
 
-//     if (playerScore > computerScore) {
-//         console.log("You Win!");
-//     } else if (playerScore < computerScore) {
-//         console.log('Computer Wins!')
-//     } else {
-//         console.log("Tie!");
-//     }
-// }
+function closeModal() {
+    const modal = document.querySelector(".modal");
+    modal.classList.add("hidden");
+}
 
-// game()
+function openModal() {
+    const modal = document.querySelector(".modal");
+    modal.classList.remove("hidden");
+}
+
+function restart() {
+    closeModal();
+    playerScore = 0;
+    computerScore = 0;
+    document.querySelector(".round-winner").textContent = "";
+    updateRoundInfo("");
+    document.querySelector("#plScore").textContent = "0";
+    document.querySelector("#compScore").textContent = "0";
+}
+
+function game() {
+    if (!gameOver()) {
+        return;
+    }
+
+    const tryAgain = document.querySelector(".try-again");
+    tryAgain.addEventListener("click", restart);
+}
