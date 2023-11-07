@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Rock Paper Scissors</title>
         <script defer src="script.js"></script>
+        <link rel="stylesheet" href="style.css" />
     </head>
 
     <body>
@@ -12,20 +13,22 @@
             <h1>Rock Paper Scissors</h1>
         </header>
         <main>
+            <p class="game-info">First to have a score of 5 wins</p>
             <div class="scoreboard">
-                <p class="round-winner"></p>
-                <p class="round-info"></p>
                 <div class="player">
                     <h2>Player</h2>
                     <h3>Score: <span id="plScore">0</span></h3>
-                    <div class="pl-current-opt"></div>
+                    <div class="curr-opt pl-current-opt"></div>
                 </div>
-                <div id="winner"></div>
                 <div class="computer">
                     <h2>Computer</h2>
                     <h3>Score: <span id="compScore">0</span></h3>
-                    <div class="comp-current-opt"></div>
+                    <div class="curr-opt comp-current-opt"></div>
                 </div>
+            </div>
+            <div class="text-container">
+                <p class="round-winner"></p>
+                <p class="round-info"></p>
             </div>
             <div class="buttons">
                 <button class="option opt-rock">✊</button>
