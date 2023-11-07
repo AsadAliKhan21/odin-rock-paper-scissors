@@ -25,7 +25,8 @@ header {
 
 .scoreboard {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    gap: 320px;
     margin-top: 72px;
 }
 
